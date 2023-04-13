@@ -1,4 +1,8 @@
-<<<<<<< HEAD
+<<<<<<<<< Temporary merge branch 1
+// js file
+||||||||| 3395839
+// js file
+=========
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
@@ -15,6 +19,4 @@ window.onclick = function(event) {
         }
     }
 }
-=======
-// js file
->>>>>>> 1118433a02e22ebed360692475cfa33e80c4aef5
+>>>>>>>>> Temporary merge branch 2
