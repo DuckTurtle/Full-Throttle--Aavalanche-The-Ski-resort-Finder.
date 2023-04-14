@@ -1,10 +1,10 @@
-var apiKey = "5282121f1a385049aa27e309e97fc347";
-var city = document.querySelector('#cityTypeBox').value;
-var date = dayjs().format("MM/DD/YYYY");
+var apiKey = "W1L4ukvhh9ASpC8FYICufwmnwxcv6i16sNbSq9ZY";
+//var city = document.querySelector('#cityTypeBox').value;
+//var date = dayjs().format("MM/DD/YYYY");
 var runs = 0;    
 
 async function getOtherDayWeather (){
-    var forcastAPI = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + apiKey + "&units=imperial";
+    var forcastAPI = "https://developer.nps.gov/api/v1/parks?" + "&api_key=" + apiKey;
     let dataResults = fetch(forcastAPI)
     .then(function(response){
         var results = response.json();
@@ -62,3 +62,4 @@ function clearOldStuff(){
         c5day.removeChild(c5day.firstChild);
       }
 };
+getOtherDayWeather();
