@@ -1,10 +1,20 @@
 var apiKey = "W1L4ukvhh9ASpC8FYICufwmnwxcv6i16sNbSq9ZY";
+var apiKey = "5282121f1a385049aa27e309e97fc347";
 var curentPark = $("#itemStorgeBlock");
 //var city = document.querySelector('#cityTypeBox').value;
 //var date = dayjs().format("MM/DD/YYYY");
 var runs = 0;    
 var parkCode = "apco";
+var date = dayjs().format("MM/DD/YYYY");
+// var parkCode = getParkCode();
 var city = setCity();
+
+init();
+
+function getParkCode(){
+    var codes =  document.location.search.split("=").pop();
+    return codes;
+}
 
 async function setCity(){
     var data = await getParkInfo(parkCode);
@@ -71,7 +81,7 @@ async function setParkInfo(){
 }
 //calls the weather api with given city.
 async function getWeather (){
-    var weatherAPI = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey + "&units=imperial";
+    var weatherAPI = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKeyW + "&units=imperial";
     let dataResults = fetch(weatherAPI)
     .then(function(response){
         var results = response.json();
@@ -103,30 +113,24 @@ async function getOtherDayWeather (){
         return;
     }
     //creates element for location and date
-    var curentDayAnchor = $("#currentDay");
-    var daytext = $("<h3>");
+    var curentDayAnchor = $("#weatherDiv");
+    var blockbox = $("<div>");
+    blockbox.addClass("weatherBlock");
+    curentDayAnchor.append(blockbox)
+
+    var daytext = $("<h4>");
     daytext.addClass("");
     daytext.text(data.name + " (" + date + ") ");
-    curentDayAnchor.append(daytext);
+    blockbox.append(daytext);
     // adds weather img
     var coolIcon = $("<img>");
     coolIcon.attr("src", "https://openweathermap.org/img/wn/" + data.weather[0].icon + ".png");
-    curentDayAnchor.append(coolIcon);
+    blockbox.append(coolIcon);
 //  adds tempature element at text
     var tempa = $("<p>");
     tempa.addClass("");
     tempa.text("Temp: " + data.main.temp + "°F");
-    curentDayAnchor.append(tempa);
-// above but for wind
-    var windy = $("<p>");
-    windy.addClass("");
-    windy.text("Wind: " + data.wind.speed + " MPH");
-    curentDayAnchor.append(windy);
-// above also but for humidaty
-    var water = $("<p>");
-    water.addClass("");
-    water.text("Humidity: " + data.main.humidity + "%");
-    curentDayAnchor.append(water);
+    blockbox.append(tempa);
 
 };
 // sets text values for forcast blocks. does same stuff as the one above but for the forcast
@@ -134,10 +138,10 @@ async function otherDayForcast(){
     var data = await getOtherDayWeather(city);
     console.log(data);
     if (!data){
-        console.error("Please input a City");
+        console.error("AHHHHH");
         return;
     }
-    var forcatDayAnchor = $("#5dayforcast");
+    var forcatDayAnchor = $("#weatherDiv");
     for(i=4; i<40; i+=8){
     var blockbox = $("<div>");
     blockbox.addClass("weatherBlock");
@@ -157,29 +161,23 @@ async function otherDayForcast(){
     tempa.addClass("");
     tempa.text("Temp: " + data.list[i].main.temp + "°F");
     blockbox.append(tempa);
-
-    var windy = $("<p>");
-    windy.addClass("");
-    windy.text("Wind: " + data.list[i].wind.speed + " MPH");
-    blockbox.append(windy);
-
-    var water = $("<p>");
-    water.addClass("");
-    water.text("Humidity: " + data.list[i].main.humidity + "%");
-    blockbox.append(water);
     }
 };
 function clearOldStuff(){
-    var curentday = document.getElementById("currentDay");
+    var curentday = document.getElementById("itemStorgeBlock");
     console.log(curentday);
     while (curentday.firstChild) {
         curentday.removeChild(curentday.firstChild);
       }
-    
-    var c5day = document.getElementById("5dayforcast");
-    while (c5day.firstChild) {
-        c5day.removeChild(c5day.firstChild);
-      }
 };
+
+function init(){
+    city = document.querySelector('#cityTypeBox').value;
+    if( runs >= 1){
+    clearOldStuff();
+    }
+    setCurrentDay(city);
+    otherDayForcast(city);
 getParkInfo();
 setParkInfo();
+}
