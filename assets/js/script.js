@@ -1,6 +1,3 @@
-<<<<<<<<< Temporary merge branch 1
-// js file
-||||||||| 3395839
 // js file
 =========
 function myFunction() {
