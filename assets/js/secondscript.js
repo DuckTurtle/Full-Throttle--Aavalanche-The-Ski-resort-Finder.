@@ -1,6 +1,7 @@
 var apiKey = "W1L4ukvhh9ASpC8FYICufwmnwxcv6i16sNbSq9ZY";
 var apiKey = "5282121f1a385049aa27e309e97fc347";
 var curentPark = $("#itemStorgeBlock");
+var titleEL = document.getElementById("parkTitle");
 //var city = document.querySelector('#cityTypeBox').value;
 //var date = dayjs().format("MM/DD/YYYY");
 var runs = 0;    
@@ -60,23 +61,34 @@ async function setParkInfo(){
         return;
     }
     var parkName = $("<h2>");
+    parkName.addClass("text-center text-3xl mt-24 ml-8 p-2");
     parkName.text(data.data[0].fullName);
     curentPark.append(parkName);
+
     var parkcost = $("<p>");
     parkcost.text(data.data[0].entranceFees[0].description);
     curentPark.append(parkcost);
+    parkcost.addClass("");
+
     var parkCall = $("<p>");
     parkCall.text(data.data[0].contacts.phoneNumbers[0].phoneNumber);
     curentPark.append(parkCall);
+    parkCall.addClass("");
+
     var parklocation = $("<p>");
     parklocation.text(data.data[0].directionsInfo);
     curentPark.append(parklocation);
+    parklocation.addClass("");
+
     var parkWebsite = $("<p>");
     parkWebsite.text(data.data[0].directionsUrl);
     curentPark.append(parkWebsite);
+    parkWebsite.addClass("");
+
     var parkHours = $("<p>");
     parkHours.text(data.data[0].operatingHours[0].description);
     curentPark.append(parkHours);
+    parkHours.addClass("");
 
 }
 //calls the weather api with given city.
