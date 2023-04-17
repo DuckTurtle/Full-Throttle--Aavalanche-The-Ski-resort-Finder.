@@ -11,21 +11,17 @@
         href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"/>
     </head>
     <body>
-        <header class="bg-blue-600">
-            <div class="flex flex-col md:flex-row">
-                <div class=" text-5xl bg-blue-600">
-            <div class="bg-blue-600 w-full">
-      <h1 class="bg-blue-600">Avalanche - Your Database for Ski Resorts</h1>
-        </div>
-        <div class="bg-white w-full">
-            <div class="bg-white text-4xl ml-72 w-full">
-      <h2 class="bg-white">Presented by Full Throttle</h2>
+        <header>
+            <!--div: centers the title text -->
+            <div class="flex flex-col text-center">
+      <h1 class="text-5xl bg-blue-600 px-8">Avalanche - Your Database for Ski Resorts</h1>
+        <div class="bg-white text-center">
+      <h2 class="bg-white text-4xl">Presented by Full Throttle</h2>
     </div>
-</div>
-  </div>
 </div>
     </header>
     <div>
+      <div class="content-start text-center mt-16">
       <div class="dropdown">
         <button onclick="myFunction()" class="dropbtn">Dropdown</button>
         <div id="myDropdown" class="dropdown-content">
@@ -91,7 +87,9 @@
         </div>
       </div>
       <!--Button that navigates to resort page-->
+      
       <button onclick="window.location.href = 'resortpage.html';">Enter</button>
+      </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
