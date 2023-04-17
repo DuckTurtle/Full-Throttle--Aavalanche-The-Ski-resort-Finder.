@@ -60,23 +60,34 @@ async function setParkInfo(){
         return;
     }
     var parkName = $("<h2>");
+    parkName.addClass("text-center text-3xl mt-24 ml-8 p-2");
     parkName.text(data.data[0].fullName);
     curentPark.append(parkName);
+
     var parkcost = $("<p>");
     parkcost.text(data.data[0].entranceFees[0].description);
     curentPark.append(parkcost);
+    parkcost.addClass("");
+
     var parkCall = $("<p>");
     parkCall.text(data.data[0].contacts.phoneNumbers[0].phoneNumber);
     curentPark.append(parkCall);
+    parkCall.addClass("");
+
     var parklocation = $("<p>");
     parklocation.text(data.data[0].directionsInfo);
     curentPark.append(parklocation);
+    parklocation.addClass("");
+
     var parkWebsite = $("<p>");
     parkWebsite.text(data.data[0].directionsUrl);
     curentPark.append(parkWebsite);
+    parkWebsite.addClass("");
+
     var parkHours = $("<p>");
     parkHours.text(data.data[0].operatingHours[0].description);
     curentPark.append(parkHours);
+    parkHours.addClass("");a
 
 }
 //calls the weather api with given city.
