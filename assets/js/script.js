@@ -18,12 +18,20 @@ window.onclick = function(event) {
 }
 
 var apiKey = "W1L4ukvhh9ASpC8FYICufwmnwxcv6i16sNbSq9ZY";
-var city = document.querySelector('#cityTypeBox').value;
-var date = dayjs().format("MM/DD/YYYY");
-var parkCode = "apco";
-var date = dayjs().format("MM/DD/YYYY");
-// var parkCode = getParkCode();
-var city = setCity();
 
+
+var states = document.getElementsByTagName("a");
+
+for (var i = 0; i < states.length ; i++) {
+    states[i].addEventListener("click", 
+        function (event) {
+            event.preventDefault();
+            if (confirm('Are you sure?')) {
+                window.location = this.href;
+            }
+        }, 
+        false);
+        }
+    
 
 
