@@ -1,7 +1,6 @@
 var apiKey = "W1L4ukvhh9ASpC8FYICufwmnwxcv6i16sNbSq9ZY";
 var apiKey = "5282121f1a385049aa27e309e97fc347";
 var curentPark = $("#itemStorgeBlock");
-var titleEL = document.getElementById("parkTitle");
 //var city = document.querySelector('#cityTypeBox').value;
 //var date = dayjs().format("MM/DD/YYYY");
 var runs = 0;    
@@ -88,7 +87,7 @@ async function setParkInfo(){
     var parkHours = $("<p>");
     parkHours.text(data.data[0].operatingHours[0].description);
     curentPark.append(parkHours);
-    parkHours.addClass("");
+    parkHours.addClass("");a
 
 }
 //calls the weather api with given city.
