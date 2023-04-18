@@ -26,8 +26,7 @@ for (var i = 0; i < states.length ; i++) {
             event.preventDefault();
             if (confirm('Are you sure?')) {
                 window.location = this.href;
-                var a = document.getElementsByTagName("a").i.value
-                console.log(a)
+                console.log()
             }
         }, 
         false);
@@ -137,8 +136,8 @@ async function setParkBubbles(){
     parkdiv.append(coolIcon);
     parkcost.addClass("");
 
+    // Creates popup box
     parkdiv.on("mouseover", function (event) {
-        // Creates popup box
         var popup = $("<div>");
         popup.addClass("popup");
         popup.text(data.data[i].exceptionhours);
