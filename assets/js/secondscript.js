@@ -65,27 +65,27 @@ async function setParkInfo(){
     curentPark.append(parkName);
 
     var parkcost = $("<p>");
-    parkcost.text(data.data[0].entranceFees[0].description);
+    parkcost.text("Cost: " + data.data[0].entranceFees[0].description);
     curentPark.append(parkcost);
     parkcost.addClass("");
 
     var parkCall = $("<p>");
-    parkCall.text(data.data[0].contacts.phoneNumbers[0].phoneNumber);
+    parkCall.text("Phone number: " + data.data[0].contacts.phoneNumbers[0].phoneNumber);
     curentPark.append(parkCall);
     parkCall.addClass("");
 
     var parklocation = $("<p>");
-    parklocation.text(data.data[0].directionsInfo);
+    parklocation.text("Location: " + data.data[0].directionsInfo);
     curentPark.append(parklocation);
     parklocation.addClass("");
 
     var parkWebsite = $("<p>");
-    parkWebsite.text(data.data[0].directionsUrl);
+    parkWebsite.text("Website: " + data.data[0].directionsUrl);
     curentPark.append(parkWebsite);
     parkWebsite.addClass("");
 
     var parkHours = $("<p>");
-    parkHours.text(data.data[0].operatingHours[0].description);
+    parkHours.text("Hours: " + data.data[0].operatingHours[0].description);
     curentPark.append(parkHours);
     parkHours.addClass("");
 
