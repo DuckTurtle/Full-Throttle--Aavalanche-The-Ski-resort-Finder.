@@ -1,5 +1,5 @@
 var apiKey = "W1L4ukvhh9ASpC8FYICufwmnwxcv6i16sNbSq9ZY";
-var apiKey = "5282121f1a385049aa27e309e97fc347";
+var apiKeyW = "5282121f1a385049aa27e309e97fc347";
 var curentPark = $("#itemStorgeBlock");
 //var city = document.querySelector('#cityTypeBox').value;
 //var date = dayjs().format("MM/DD/YYYY");
@@ -7,7 +7,7 @@ var runs = 0;
 var parkCode = "apco";
 var date = dayjs().format("MM/DD/YYYY");
 // var parkCode = getParkCode();
-var city = setCity();
+
 
 init();
 
@@ -17,7 +17,7 @@ function getParkCode(){
 }
 
 async function setCity(){
-    var data = await getParkInfo(parkCode);
+    var data = await getCity(parkCode);
     console.log(data);
     // checks for valid data
     if (!data){
@@ -27,7 +27,7 @@ async function setCity(){
     var currentCity = data.data[0].addresses[0].city
     var ccity = currentCity;
     return ccity;
-
+    
 };
 async function getCity(){
     var forcastAPI = "https://developer.nps.gov/api/v1/parks?parkCode=" + parkCode + "&api_key=" + apiKey;
@@ -87,11 +87,13 @@ async function setParkInfo(){
     var parkHours = $("<p>");
     parkHours.text(data.data[0].operatingHours[0].description);
     curentPark.append(parkHours);
-    parkHours.addClass("");a
+    parkHours.addClass("");
 
 }
 //calls the weather api with given city.
 async function getWeather (){
+    var city =  await setCity();
+    console.log(city);
     var weatherAPI = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKeyW + "&units=imperial";
     let dataResults = fetch(weatherAPI)
     .then(function(response){
@@ -104,7 +106,9 @@ async function getWeather (){
 }
 //calls the forcast and waits to pass it on till the api responds.
 async function getOtherDayWeather (){
-    var forcastAPI = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + apiKey + "&units=imperial";
+    var city =  await setCity();
+    console.log(city);
+    var forcastAPI = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + apiKeyW + "&units=imperial";
     let dataResults = fetch(forcastAPI)
     .then(function(response){
         var results = response.json();
@@ -116,7 +120,7 @@ async function getOtherDayWeather (){
 }
 //sets all the text content for curent day weather
  async function setCurrentDay(){
-    var data = await getWeather(city);
+    var data = await getWeather();
     console.log(data);
     // checks for valid data
     if (!data){
@@ -146,7 +150,7 @@ async function getOtherDayWeather (){
 };
 // sets text values for forcast blocks. does same stuff as the one above but for the forcast
 async function otherDayForcast(){
-    var data = await getOtherDayWeather(city);
+    var data = await getOtherDayWeather();
     console.log(data);
     if (!data){
         console.error("AHHHHH");
@@ -183,12 +187,11 @@ function clearOldStuff(){
 };
 
 function init(){
-    city = document.querySelector('#cityTypeBox').value;
     if( runs >= 1){
     clearOldStuff();
     }
-    setCurrentDay(city);
-    otherDayForcast(city);
+    setCurrentDay();
+    otherDayForcast();
 getParkInfo();
 setParkInfo();
 }
