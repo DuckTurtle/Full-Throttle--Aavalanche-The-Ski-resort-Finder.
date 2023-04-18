@@ -60,34 +60,34 @@ async function setParkInfo(){
         return;
     }
     var parkName = $("<h2>");
-    parkName.addClass("text-center text-3xl mt-24 ml-8 p-2");
+    parkName.addClass("text-center text-3xl mt-24 p-2 bg-stone-400");
     parkName.text(data.data[0].fullName);
     curentPark.append(parkName);
 
     var parkcost = $("<p>");
     parkcost.text("Cost: " + data.data[0].entranceFees[0].description);
     curentPark.append(parkcost);
-    parkcost.addClass("");
+    parkcost.addClass("bg-stone-400");
 
     var parkCall = $("<p>");
     parkCall.text("Phone number: " + data.data[0].contacts.phoneNumbers[0].phoneNumber);
     curentPark.append(parkCall);
-    parkCall.addClass("");
+    parkCall.addClass("bg-stone-400");
 
     var parklocation = $("<p>");
     parklocation.text("Location: " + data.data[0].directionsInfo);
     curentPark.append(parklocation);
-    parklocation.addClass("");
+    parklocation.addClass("bg-stone-400");
 
     var parkWebsite = $("<p>");
     parkWebsite.text("Website: " + data.data[0].directionsUrl);
     curentPark.append(parkWebsite);
-    parkWebsite.addClass("");
+    parkWebsite.addClass("bg-stone-400");
 
     var parkHours = $("<p>");
     parkHours.text("Hours: " + data.data[0].operatingHours[0].description);
     curentPark.append(parkHours);
-    parkHours.addClass("");
+    parkHours.addClass("bg-stone-400");
 
 }
 //calls the weather api with given city.
@@ -130,7 +130,7 @@ async function getOtherDayWeather (){
     //creates element for location and date
     var curentDayAnchor = $("#weatherDiv");
     var blockbox = $("<div>");
-    blockbox.addClass("weatherBlock");
+    blockbox.addClass("weatherBlock border-e-8 border-t-4 border-stone-400");
     curentDayAnchor.append(blockbox)
 
     var daytext = $("<h4>");
@@ -159,7 +159,7 @@ async function otherDayForcast(){
     var forcatDayAnchor = $("#weatherDiv");
     for(i=4; i<40; i+=8){
     var blockbox = $("<div>");
-    blockbox.addClass("weatherBlock");
+    blockbox.addClass("weatherBlock border-e-8 border-t-4 border-stone-400");
     forcatDayAnchor.append(blockbox)
 
     var daytext = $("<h4>");
