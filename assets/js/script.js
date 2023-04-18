@@ -3,7 +3,6 @@ var apiKey = "W1L4ukvhh9ASpC8FYICufwmnwxcv6i16sNbSq9ZY";
 
 //state data
 var states = document.getElementsByTagName("option");
-chosenstatecode=[];
 for (var i = 0; i < states.length ; i++) {
     states[i].addEventListener("click", 
         function (event) {
@@ -13,7 +12,6 @@ for (var i = 0; i < states.length ; i++) {
         }, 
         false);
         }
-console.log(chosenstatecode)
 // pass park code  though location
 var pageAnchor = $("#results")
 async function getParks(){
