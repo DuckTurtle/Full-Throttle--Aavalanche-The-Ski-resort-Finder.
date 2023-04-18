@@ -15,3 +15,16 @@ window.onclick = function(event) {
         }
     }
 }
+
+
+// Anthony's code below
+
+function showPopUp() {
+  document.getElementById("popUp").style.visibility = "visible";
+  document.getElementById("popUp").style.opacity = "1";
+}
+
+function hidePopUp() {
+  document.getElementById("popUp").style.visibility = "hidden";
+  document.getElementById("popUp").style.opacity = "0";
+}
