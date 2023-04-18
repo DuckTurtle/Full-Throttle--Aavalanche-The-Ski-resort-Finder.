@@ -6,10 +6,10 @@ function myFunction() {
 
 window.onclick = function(event) {
     if(!event.target.matches('.dropbtn')) {
-        var dropwdowns = document.getElementsByClassName("dropdown-content");
+        var dropdown = document.getElementsByClassName("dropdown-content");
         var i;
-        for (i = 0; i < dropwdowns.length; i++) {
-            var openDropdown = dropdowns[i];
+        for (i = 0; i < dropdown.length; i++) {
+            var openDropdown = dropdown[i];
             if (openDropdown.classList.contains('show')) {
                 openDropdown.classList.remove('show');
             }
@@ -19,7 +19,6 @@ window.onclick = function(event) {
 
 var apiKey = "W1L4ukvhh9ASpC8FYICufwmnwxcv6i16sNbSq9ZY";
 
-
 var states = document.getElementsByTagName("a");
 
 for (var i = 0; i < states.length ; i++) {
@@ -28,6 +27,7 @@ for (var i = 0; i < states.length ; i++) {
             event.preventDefault();
             if (confirm('Are you sure?')) {
                 window.location = this.href;
+                console.log()
             }
         }, 
         false);
