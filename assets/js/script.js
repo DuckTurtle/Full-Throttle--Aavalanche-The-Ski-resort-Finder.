@@ -67,7 +67,7 @@ async function setParkBubbles(){
     coolIcon.addClass("");
 
     var parkName = $("<h2>");
-    parkName.addClass("text-center text-3xl mt-24 ml-8 p-2");
+    parkName.addClass("text-center text-3xl p-2");
     parkName.text(data.data[i].fullName);
     parkdiv.append(parkName);
 
