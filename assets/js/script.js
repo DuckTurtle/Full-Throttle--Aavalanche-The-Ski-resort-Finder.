@@ -136,6 +136,7 @@ async function setParkBubbles(){
     parkdiv.append(coolIcon);
     parkcost.addClass("");
 
+    
     // Creates popup box
     parkdiv.on("mouseover", function (event) {
         var popup = $("<div>");
@@ -157,6 +158,7 @@ async function setParkBubbles(){
         // Remove the popup when the mouse leaves the parkdiv element
         $(".popup").remove();
       });
+
 
     var parkName = $("<h2>");
     parkName.addClass("text-center text-3xl mt-24 ml-8 p-2");
