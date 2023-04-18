@@ -60,15 +60,15 @@ async function setParkBubbles(){
     var parkdiv = $("<button>");
     parkdiv.attr({id: data.data[i].parkCode});
     pageAnchor.append(parkdiv);
-    parkdiv.addClass("");
+    parkdiv.addClass("parkBlock                                                                    ");
 
     var coolIcon = $("<img>");
     coolIcon.attr("src",  data.data[i].images[0].url);
     parkdiv.append(coolIcon);
-    coolIcon.addClass("");
+    coolIcon.addClass("parkBlockimg");
 
     var parkName = $("<h2>");
-    parkName.addClass("text-center text-3xl mt-24 ml-8 p-2");
+    parkName.addClass("text-center text-3xl p-2");
     parkName.text(data.data[i].fullName);
     parkdiv.append(parkName);
 
