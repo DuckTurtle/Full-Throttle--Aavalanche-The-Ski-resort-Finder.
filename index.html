@@ -4,29 +4,94 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial scale=1.0">
         <title>Avalance Ski Resort Database</title>
-        <link rel="stylesheet" href="./assets/css/reset.css">
         <link rel="stylesheet" href="./assets/css/style.css">
         <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"/>
     </head>
     <body>
-    <header>
-      <h1>Avalanche - Your Database for Ski Resorts</h1>
-      <h2>Presented by Full Throttle</h2>
+        <header>
+            <!--div: centers the title text -->
+            <div class="flex flex-col text-center">
+      <h1 class="text-5xl bg-blue-600 px-8">Avalanche - Your Database for Ski Resorts</h1>
+        <div class="bg-white text-center">
+      <h2 class="bg-white text-4xl">Presented by Full Throttle</h2>
+    </div>
+</div>
     </header>
     <div>
+      <div class="content-start text-center mt-16">
       <div class="dropdown">
-        <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+        <button onclick="myFunction()" class="dropbtn">Select A State!</button>
         <div id="myDropdown" class="dropdown-content">
-          <a href="#">WI</a>
-          <a href="#">MN</a>
+          <a href="#">AL</a>
+          <a href="#">AK</a>
+          <a href="#">AZ</a>
+          <a href="#">AR</a>
+          <a href="#">CA</a>
+          <a href="#">CO</a>
+          <a href="#">CT</a>
+          <a href="#">DE</a>
+          <a href="#">FL</a>
+          <a href="#">AL</a>
+          <a href="#">AK</a>
+          <a href="#">AZ</a>
+          <a href="#">AR</a>
+          <a href="#">CA</a>
+          <a href="#">CO</a>
+          <a href="#">CT</a>
+          <a href="#">DE</a>
+          <a href="#">FL</a>
+          <a href="#">GA</a>
+          <a href="#">HI</a>
+          <a href="#">ID</a>
           <a href="#">IL</a>
+          <a href="#">IN</a>
+          <a href="#">IA</a>
+          <a href="#">KS</a>
+          <a href="#">KY</a>
+          <a href="#">LA</a>
+          <a href="#">ME</a>
+          <a href="#">MD</a>
+          <a href="#">MA</a>
+          <a href="#">MI</a>
+          <a href="#">MN</a>
+          <a href="#">MS</a>
+          <a href="#">MO</a>
+          <a href="#">MT</a>
+          <a href="#">NE</a>
+          <a href="#">NV</a>
+          <a href="#">NH</a>
+          <a href="#">NJ</a>
+          <a href="#">NM</a>
+          <a href="#">NY</a>
+          <a href="#">NC</a>
+          <a href="#">ND</a>
+          <a href="#">OH</a>
+          <a href="#">OK</a>
+          <a href="#">OR</a>
+          <a href="#">PA</a>
+          <a href="#">RI</a>
+          <a href="#">SC</a>
+          <a href="#">SD</a>
+          <a href="#">TN</a>
+          <a href="#">TX</a>
+          <a href="#">UT</a>
+          <a href="#">VT</a>
+          <a href="#">VA</a>
+          <a href="#">WA</a>
+          <a href="#">WV</a>
+          <a href="#">WI</a>
+          <a href="#">WY</a>
         </div>
       </div>
       <!--Button that navigates to resort page-->
+      
       <button onclick="window.location.href = 'resortpage.html';">Enter</button>
+      </div>
+      <div id="results"></div>
     </div>
-    <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="//code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script src="./assets/js/script.js"></script>
   </body>
 </html>
