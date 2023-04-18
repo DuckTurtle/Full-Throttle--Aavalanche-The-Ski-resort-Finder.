@@ -26,7 +26,8 @@ for (var i = 0; i < states.length ; i++) {
             event.preventDefault();
             if (confirm('Are you sure?')) {
                 window.location = this.href;
-                console.log()
+                var a = document.getElementsByTagName("a").i.value
+                console.log(a)
             }
         }, 
         false);
