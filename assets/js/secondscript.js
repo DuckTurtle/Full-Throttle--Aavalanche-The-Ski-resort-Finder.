@@ -2,7 +2,6 @@ var apiKey = "W1L4ukvhh9ASpC8FYICufwmnwxcv6i16sNbSq9ZY";
 var apiKeyW = "5282121f1a385049aa27e309e97fc347";
 var curentPark = $("#itemStorgeBlock");
 //var city = document.querySelector('#cityTypeBox').value;
-//var date = dayjs().format("MM/DD/YYYY");
 var runs = 0;    
 var parkCode = "apco";
 var date = dayjs().format("MM/DD/YYYY");
