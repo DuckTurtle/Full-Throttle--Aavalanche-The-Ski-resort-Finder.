@@ -57,21 +57,21 @@ async function setParkBubbles(){
     }
      for(i=0; i<data.data.length; i++){
     var parkdiv = $("<button>");
-    parkdiv.addID(data.data[i].parkCode);
+    parkdiv.attr({id: data.data[i].parkCode});
     pageAnchor.append(parkdiv);
     parkdiv.addClass("");
 
     var coolIcon = $("<img>");
     coolIcon.attr("src",  data.data[i].images[0].url);
     parkdiv.append(coolIcon);
-    parkcost.addClass("");
+    coolIcon.addClass("");
 
     var parkName = $("<h2>");
     parkName.addClass("text-center text-3xl mt-24 ml-8 p-2");
     parkName.text(data.data[i].fullName);
     parkdiv.append(parkName);
 
-    saveBnt.on("click", function (event) {
+    parkdiv.on("click", function (event) {
         event.preventDefault();
 
         var parkCode = "'" + data.data[i].parkCode + "'";
