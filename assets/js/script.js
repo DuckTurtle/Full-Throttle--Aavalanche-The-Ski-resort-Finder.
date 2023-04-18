@@ -3,11 +3,14 @@ var apiKey = "W1L4ukvhh9ASpC8FYICufwmnwxcv6i16sNbSq9ZY";
 
 //state data
 var states = document.getElementsByTagName("option");
+var searchInputVal = document.querySelector
+var formatinput
+
 for (var i = 0; i < states.length ; i++) {
     states[i].addEventListener("click", 
         function (event) {
-            console.log([i].value)
-            chosenstatecode+='[i]'
+            var e = document.getElementByValue("format-input");
+            console.log(e)
             event.preventDefault();
         }, 
         false);
