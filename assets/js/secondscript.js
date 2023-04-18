@@ -1,10 +1,114 @@
-var apiKey = "5282121f1a385049aa27e309e97fc347";
-var city = document.querySelector('#cityTypeBox').value;
-var date = dayjs().format("MM/DD/YYYY");
+var apiKey = "W1L4ukvhh9ASpC8FYICufwmnwxcv6i16sNbSq9ZY";
+var apiKeyW = "5282121f1a385049aa27e309e97fc347";
+var curentPark = $("#itemStorgeBlock");
+//var city = document.querySelector('#cityTypeBox').value;
+//var date = dayjs().format("MM/DD/YYYY");
 var runs = 0;    
+var parkCode = "apco";
+var date = dayjs().format("MM/DD/YYYY");
+// var parkCode = getParkCode();
 
+
+init();
+
+function getParkCode(){
+    var codes =  document.location.search.split("=").pop();
+    return codes;
+}
+
+async function setCity(){
+    var data = await getCity(parkCode);
+    console.log(data);
+    // checks for valid data
+    if (!data){
+        console.error("Car Crash");
+        return;
+    }
+    var currentCity = data.data[0].addresses[0].city
+    var ccity = currentCity;
+    return ccity;
+    
+};
+async function getCity(){
+    var forcastAPI = "https://developer.nps.gov/api/v1/parks?parkCode=" + parkCode + "&api_key=" + apiKey;
+    let dataResults = fetch(forcastAPI)
+    .then(function(response){
+        var results = response.json();
+        console.log(results);
+            return results;
+        });
+        let data = await dataResults;
+        return data;
+}
+async function getParkInfo (){
+    var forcastAPI = "https://developer.nps.gov/api/v1/parks?parkCode=" + parkCode + "&api_key=" + apiKey;
+    let dataResults = fetch(forcastAPI)
+    .then(function(response){
+        var results = response.json();
+        console.log(results);
+            return results;
+        });
+        let data = await dataResults;
+        return data;
+}
+async function setParkInfo(){
+    var data = await getParkInfo(parkCode);
+    console.log(data);
+    // checks for valid data
+    if (!data){
+        console.error("Please input a City");
+        return;
+    }
+    var parkName = $("<h2>");
+    parkName.addClass("text-center text-3xl mt-24 ml-8 p-2");
+    parkName.text(data.data[0].fullName);
+    curentPark.append(parkName);
+
+    var parkcost = $("<p>");
+    parkcost.text("Cost: " + data.data[0].entranceFees[0].description);
+    curentPark.append(parkcost);
+    parkcost.addClass("");
+
+    var parkCall = $("<p>");
+    parkCall.text("Phone number: " + data.data[0].contacts.phoneNumbers[0].phoneNumber);
+    curentPark.append(parkCall);
+    parkCall.addClass("");
+
+    var parklocation = $("<p>");
+    parklocation.text("Location: " + data.data[0].directionsInfo);
+    curentPark.append(parklocation);
+    parklocation.addClass("");
+
+    var parkWebsite = $("<p>");
+    parkWebsite.text("Website: " + data.data[0].directionsUrl);
+    curentPark.append(parkWebsite);
+    parkWebsite.addClass("");
+
+    var parkHours = $("<p>");
+    parkHours.text("Hours: " + data.data[0].operatingHours[0].description);
+    curentPark.append(parkHours);
+    parkHours.addClass("");
+
+}
+//calls the weather api with given city.
+async function getWeather (){
+    var city =  await setCity();
+    console.log(city);
+    var weatherAPI = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKeyW + "&units=imperial";
+    let dataResults = fetch(weatherAPI)
+    .then(function(response){
+        var results = response.json();
+        console.log(results);
+            return results;
+        });
+        let data = await dataResults;
+        return data;
+}
+//calls the forcast and waits to pass it on till the api responds.
 async function getOtherDayWeather (){
-    var forcastAPI = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + apiKey + "&units=imperial";
+    var city =  await setCity();
+    console.log(city);
+    var forcastAPI = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + apiKeyW + "&units=imperial";
     let dataResults = fetch(forcastAPI)
     .then(function(response){
         var results = response.json();
@@ -16,7 +120,7 @@ async function getOtherDayWeather (){
 }
 //sets all the text content for curent day weather
  async function setCurrentDay(){
-    var data = await getWeather(city);
+    var data = await getWeather();
     console.log(data);
     // checks for valid data
     if (!data){
@@ -24,41 +128,70 @@ async function getOtherDayWeather (){
         return;
     }
     //creates element for location and date
-    var curentDayAnchor = $("#currentDay");
-    var daytext = $("<h3>");
+    var curentDayAnchor = $("#weatherDiv");
+    var blockbox = $("<div>");
+    blockbox.addClass("weatherBlock");
+    curentDayAnchor.append(blockbox)
+
+    var daytext = $("<h4>");
     daytext.addClass("");
     daytext.text(data.name + " (" + date + ") ");
-    curentDayAnchor.append(daytext);
+    blockbox.append(daytext);
     // adds weather img
     var coolIcon = $("<img>");
     coolIcon.attr("src", "https://openweathermap.org/img/wn/" + data.weather[0].icon + ".png");
-    curentDayAnchor.append(coolIcon);
+    blockbox.append(coolIcon);
 //  adds tempature element at text
     var tempa = $("<p>");
     tempa.addClass("");
     tempa.text("Temp: " + data.main.temp + "°F");
-    curentDayAnchor.append(tempa);
-// above but for wind
-    var windy = $("<p>");
-    windy.addClass("");
-    windy.text("Wind: " + data.wind.speed + " MPH");
-    curentDayAnchor.append(windy);
-// above also but for humidaty
-    var water = $("<p>");
-    water.addClass("");
-    water.text("Humidity: " + data.main.humidity + "%");
-    curentDayAnchor.append(water);
+    blockbox.append(tempa);
 
 };
+// sets text values for forcast blocks. does same stuff as the one above but for the forcast
+async function otherDayForcast(){
+    var data = await getOtherDayWeather();
+    console.log(data);
+    if (!data){
+        console.error("AHHHHH");
+        return;
+    }
+    var forcatDayAnchor = $("#weatherDiv");
+    for(i=4; i<40; i+=8){
+    var blockbox = $("<div>");
+    blockbox.addClass("weatherBlock");
+    forcatDayAnchor.append(blockbox)
+
+    var daytext = $("<h4>");
+    daytext.addClass("");
+    var dateCovert = dayjs(data.list[i].dt_txt).format("MM/DD/YYYY")
+    daytext.text(data.city.name + " (" + dateCovert + ") ");
+    blockbox.append(daytext);
+
+    var coolIcon = $("<img>");
+    coolIcon.attr("src", "https://openweathermap.org/img/wn/" + data.list[i].weather[0].icon + ".png");
+    blockbox.append(coolIcon);
+
+    var tempa = $("<p>");
+    tempa.addClass("");
+    tempa.text("Temp: " + data.list[i].main.temp + "°F");
+    blockbox.append(tempa);
+    }
+};
 function clearOldStuff(){
-    var curentday = document.getElementById("currentDay");
+    var curentday = document.getElementById("itemStorgeBlock");
     console.log(curentday);
     while (curentday.firstChild) {
         curentday.removeChild(curentday.firstChild);
       }
-    
-    var c5day = document.getElementById("5dayforcast");
-    while (c5day.firstChild) {
-        c5day.removeChild(c5day.firstChild);
-      }
 };
+
+function init(){
+    if( runs >= 1){
+    clearOldStuff();
+    }
+    setCurrentDay();
+    otherDayForcast();
+getParkInfo();
+setParkInfo();
+}
