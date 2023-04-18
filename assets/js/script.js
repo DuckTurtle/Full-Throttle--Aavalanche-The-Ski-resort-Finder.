@@ -1,39 +1,19 @@
-
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
-
-window.onclick = function(event) {
-    if(!event.target.matches('.dropbtn')) {
-        var dropwdowns = document.getElementsByClassName("dropdown-content");
-        var i;
-        for (i = 0; i < dropwdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
-            }
-        }
-    }
-}
-
+//key
 var apiKey = "W1L4ukvhh9ASpC8FYICufwmnwxcv6i16sNbSq9ZY";
 
-var states = document.getElementsByTagName("a");
-
+//state data
+var states = document.getElementsByTagName("option");
+chosenstatecode=[];
 for (var i = 0; i < states.length ; i++) {
     states[i].addEventListener("click", 
         function (event) {
+            console.log([i].value)
+            chosenstatecode+='[i]'
             event.preventDefault();
-            if (confirm('Are you sure?')) {
-                window.location = this.href;
-                var a = document.getElementsByTagName("a").i.value
-                console.log(a)
-            }
         }, 
         false);
         }
-    
-
+console.log(chosenstatecode)
 // pass park code  though location
 var pageAnchor = $("#results")
 async function getParks(){
