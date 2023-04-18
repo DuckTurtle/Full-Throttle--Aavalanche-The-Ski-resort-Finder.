@@ -136,6 +136,28 @@ async function setParkBubbles(){
     parkdiv.append(coolIcon);
     parkcost.addClass("");
 
+    parkdiv.on("mouseover", function (event) {
+        // Creates popup box
+        var popup = $("<div>");
+        popup.addClass("popup");
+        popup.text(data.data[i].exceptionhours);
+  
+        // Positions popup box
+        var parkdivPos = parkdiv.offset();
+        popup.css({
+          top: parkdivPos.top + parkdiv.outerHeight() + 10,
+          left: parkdivPos.left,
+        });
+  
+        // Displays the popup on page
+        $("body").append(popup);
+      });
+  
+      parkdiv.on("mouseout", function (event) {
+        // Remove the popup when the mouse leaves the parkdiv element
+        $(".popup").remove();
+      });
+
     var parkName = $("<h2>");
     parkName.addClass("text-center text-3xl mt-24 ml-8 p-2");
     parkName.text(data.data[i].fullName);
@@ -155,15 +177,3 @@ async function setParkBubbles(){
      
 };
 setParkBubbles();
-
-// Anthony's code below
-
-function showPopUp() {
-  document.getElementById("popUp").style.visibility = "visible";
-  document.getElementById("popUp").style.opacity = "1";
-}
-
-function hidePopUp() {
-  document.getElementById("popUp").style.visibility = "hidden";
-  document.getElementById("popUp").style.opacity = "0";
-}
