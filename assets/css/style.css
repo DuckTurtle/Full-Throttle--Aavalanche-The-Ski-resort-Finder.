@@ -81,3 +81,27 @@
   opacity: 0;
   transition: opacity 0.3s;
 }
+
+.parkBlockimg{
+  height: 60%;
+  width: 100%;
+  padding-right: 0px;
+}
+.parkBlock{
+  display: inline-flex;
+  flex-direction: row;
+  margin: 20px;
+  flex-wrap: wrap;
+  height: 320px;
+  width: 280px;
+  color:antiquewhite;
+  background-color: rgb(7, 112, 21);
+  font-size: 15px;
+}
+
+@media only screen and (mix-width: 800px)  {
+  .parkBlock {
+    height: 250px;
+    width: 200px;
+  }
+}

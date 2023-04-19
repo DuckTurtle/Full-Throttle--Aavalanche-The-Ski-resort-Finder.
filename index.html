@@ -8,16 +8,19 @@
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"/>
     </head>
-    <body>
+    <body class="bg-blue-400">
         <header>
             <!--div: centers the title text -->
             <div class="flex flex-col text-center">
-      <h1 class="text-5xl bg-blue-600 px-8">Tree Finder - Your Database for State Parks.</h1>
-        <div class="bg-white text-center">
-      <h2 class="bg-white text-4xl">Presented by Full Throttle</h2>
+      <h1 class="text-5xl bg-green-600 px-8">Tree Finder- Your Database for State Parks</h1>
+        <div class="text-center">
+      <h2 class="bg-stone-400 text-4xl">Presented by Full Throttle</h2>
     </div>
+  </header>
 </div>
-    </header>
+    <!--div: centers the Select box -->
+    <div class="text-center mt-24">
+
     <form id="search-form"    class="form w-100">
       <select id="format-input" class="form-input w-100">
         <option value="" disabled selected>Select a State</option>
@@ -72,9 +75,9 @@
         <option value="WV">West Virginia</option>
         <option value="WY">Wyoming</option>
       </select>
-      <button class="btn btn-info btn-block">CLick me</button>
-
+      <button id="clickMeBnt" class="bg-stone-400 hover:bg-stone-600 rounded btn border-2 border-black btn-info btn-block">Search!</button>
     </form>
+    </div>
       <div id="results"></div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
