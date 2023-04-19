@@ -68,6 +68,7 @@ async function setParkBubbles(){
      for(i=0; i<data.data.length; i++){
     var parkdiv = $("<button>");
     parkdiv.attr({id: data.data[i].parkCode});
+    parkdiv.attr("value", i );
     pageAnchor.append(parkdiv);
     parkdiv.addClass("parkBlock");
 
@@ -95,7 +96,9 @@ async function setParkBubbles(){
     parkdiv.on("mouseover", function () {
         var parkInfo = $("<div>");
         parkInfo.addClass("parkBlock-info");
-        parkInfo.text("This park is located in " + state + "! Click me to show more info!");
+        console.log($(this).attr("value"))
+        parkInfo.text("This park is located in " + data.data[$(this).attr("value")].addresses[0].city + "! Click me to show more info!");
+      
   
         // Append the information box to the parent element
         $(this).append(parkInfo);
