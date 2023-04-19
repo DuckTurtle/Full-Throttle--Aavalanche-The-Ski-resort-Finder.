@@ -1,17 +1,16 @@
 var apiKey = "W1L4ukvhh9ASpC8FYICufwmnwxcv6i16sNbSq9ZY";
 var apiKeyW = "5282121f1a385049aa27e309e97fc347";
 var curentPark = $("#itemStorgeBlock");
-//var city = document.querySelector('#cityTypeBox').value;
 var runs = 0;    
-var parkCode = "apco";
 var date = dayjs().format("MM/DD/YYYY");
-// var parkCode = getParkCode();
+ var parkCode = getParkCode();
 
 
 init();
 
 function getParkCode(){
     var codes =  document.location.search.split("=").pop();
+    console.log(codes)
     return codes;
 }
 
