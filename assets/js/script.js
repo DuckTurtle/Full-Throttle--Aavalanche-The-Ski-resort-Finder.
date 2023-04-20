@@ -18,16 +18,17 @@ window.onclick = function(event) {
 
 var apiKey = "W1L4ukvhh9ASpC8FYICufwmnwxcv6i16sNbSq9ZY";
 
-var states = document.getElementsByTagName("a");
+//state data
+var states = document.getElementsByTagName("option");
+var searchInputVal = document.querySelector
+var formatinput
 
 for (var i = 0; i < states.length ; i++) {
     states[i].addEventListener("click", 
         function (event) {
+            var e = document.getElementByValue("format-input");
+            console.log(e)
             event.preventDefault();
-            if (confirm('Are you sure?')) {
-                window.location = this.href;
-                console.log()
-            }
         }, 
         false);
         }
