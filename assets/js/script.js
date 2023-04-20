@@ -69,7 +69,7 @@ async function setParkBubbles(){
     var parkdiv = $("<button>");
     parkdiv.attr({id: data.data[i].parkCode});
     pageAnchor.append(parkdiv);
-    parkdiv.addClass("parkBlock                                                                    ");
+    parkdiv.addClass("parkBlock");
 
     var coolIcon = $("<img>");
     coolIcon.attr("src",  data.data[i].images[0].url);
