@@ -7,13 +7,13 @@ var date = dayjs().format("MM/DD/YYYY");
 
 
 init();
-
+//pulls park code from location.
 function getParkCode(){
     var codes =  document.location.search.split("=").pop();
     console.log(codes)
     return codes;
 }
-
+//set latitude of park
 async function setLat(){
     var data = await getCords(parkCode);
     console.log(data);
@@ -27,7 +27,7 @@ async function setLat(){
     return lLat;
     
 };
-
+//returns the longitude of the park.
 async function setLong(){
     var data = await getCords(parkCode);
     console.log(data);
@@ -41,6 +41,7 @@ async function setLong(){
     return lLong;
     
 };
+//is used to call the api and get the lat and longe of the selected park.
 async function getCords(){
     var forcastAPI = "https://developer.nps.gov/api/v1/parks?parkCode=" + parkCode + "&api_key=" + apiKey;
     let dataResults = fetch(forcastAPI)
@@ -52,6 +53,7 @@ async function getCords(){
         let data = await dataResults;
         return data;
 }
+//calls api for required park information
 async function getParkInfo (){
     var forcastAPI = "https://developer.nps.gov/api/v1/parks?parkCode=" + parkCode + "&api_key=" + apiKey;
     let dataResults = fetch(forcastAPI)
@@ -63,6 +65,7 @@ async function getParkInfo (){
         let data = await dataResults;
         return data;
 }
+//pulls park info from api call and diplays it on screen
 async function setParkInfo(){
     var data = await getParkInfo(parkCode);
     console.log(data);
@@ -190,6 +193,7 @@ async function otherDayForcast(){
     blockbox.append(tempa);
     }
 };
+//clears old items incase of page reload or some other bug
 function clearOldStuff(){
     var curentday = document.getElementById("itemStorgeBlock");
     console.log(curentday);

@@ -35,16 +35,18 @@ for (var i = 0; i < states.length ; i++) {
 var cMBnt = document.querySelector('#clickMeBnt');
 var state = "";
 var runs = 0;
+//gets the the current state selected by user 
 function getState(event){
     event.preventDefault();
     if( runs >= 1){
         clearOldStuff();
         }
+        //pulls state from dropdown box.
      state = document.querySelector("#format-input").value;
     setParkBubbles(state);
     runs++;
 }
-// pass park code  though location
+// grabs a list of parks within the set state
 var pageAnchor = $("#results")
 async function getParks(){
     var parkAPI = "https://developer.nps.gov/api/v1/parks?stateCode=" + state + "&api_key=W1L4ukvhh9ASpC8FYICufwmnwxcv6i16sNbSq9ZY";
@@ -57,6 +59,7 @@ async function getParks(){
         let data = await dataResults;
         return data;
 }
+// creates the blocks that contain the loaded list of parks.
 async function setParkBubbles(){
     var data = await getParks(state);
     console.log(data);
@@ -82,7 +85,7 @@ async function setParkBubbles(){
     parkName.text(data.data[i].fullName);
     parkdiv.append(parkName);
     
- 
+ //adds event listoner for each park block, upon clicking sends you to next page.
     parkdiv.on("click", function (event) {
         event.preventDefault();
 
@@ -111,6 +114,7 @@ async function setParkBubbles(){
     }
      
 };
+//clears the last search results.
 function clearOldStuff(){
     var curentday = document.getElementById("results");
     console.log(curentday);
@@ -118,5 +122,5 @@ function clearOldStuff(){
         curentday.removeChild(curentday.firstChild);
       }
 };
-
+//grabs parks when the button is clicked
 cMBnt.addEventListener("click",getState)
