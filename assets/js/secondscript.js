@@ -14,20 +14,34 @@ function getParkCode(){
     return codes;
 }
 
-async function setCity(){
-    var data = await getCity(parkCode);
+async function setLat(){
+    var data = await getCords(parkCode);
     console.log(data);
     // checks for valid data
     if (!data){
         console.error("Car Crash");
         return;
     }
-    var currentCity = data.data[0].addresses[0].city
-    var ccity = currentCity;
-    return ccity;
+    var currentCity = data.data[0].latitude;
+    var lLat = currentCity;
+    return lLat;
     
 };
-async function getCity(){
+
+async function setLong(){
+    var data = await getCords(parkCode);
+    console.log(data);
+    // checks for valid data
+    if (!data){
+        console.error("Car Crash");
+        return;
+    }
+    var currentCity = data.data[0].longitude;
+    var lLong = currentCity;
+    return lLong;
+    
+};
+async function getCords(){
     var forcastAPI = "https://developer.nps.gov/api/v1/parks?parkCode=" + parkCode + "&api_key=" + apiKey;
     let dataResults = fetch(forcastAPI)
     .then(function(response){
@@ -90,9 +104,9 @@ async function setParkInfo(){
 }
 //calls the weather api with given city.
 async function getWeather (){
-    var city =  await setCity();
-    console.log(city);
-    var weatherAPI = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKeyW + "&units=imperial";
+    var lat =  await setLat();
+    var long = await setLong();
+    var weatherAPI = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + long + "&appid=" + apiKeyW + "&units=imperial";
     let dataResults = fetch(weatherAPI)
     .then(function(response){
         var results = response.json();
@@ -104,9 +118,9 @@ async function getWeather (){
 }
 //calls the forcast and waits to pass it on till the api responds.
 async function getOtherDayWeather (){
-    var city =  await setCity();
-    console.log(city);
-    var forcastAPI = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + apiKeyW + "&units=imperial";
+    var lat =  await setLat();
+    var long = await setLong();
+    var forcastAPI = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + long + "&appid=" + apiKeyW + "&units=imperial";
     let dataResults = fetch(forcastAPI)
     .then(function(response){
         var results = response.json();

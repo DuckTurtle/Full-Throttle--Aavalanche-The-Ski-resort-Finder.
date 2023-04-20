@@ -68,6 +68,7 @@ async function setParkBubbles(){
      for(i=0; i<data.data.length; i++){
     var parkdiv = $("<button>");
     parkdiv.attr({id: data.data[i].parkCode});
+    parkdiv.attr("value", i );
     pageAnchor.append(parkdiv);
     parkdiv.addClass("parkBlock                                                                    ");
 
@@ -80,12 +81,12 @@ async function setParkBubbles(){
     parkName.addClass("text-center text-2xl p-2");
     parkName.text(data.data[i].fullName);
     parkdiv.append(parkName);
-    /* not currently working
+/* not currently working
     // Creates popup box
-    parkdiv.on("mouseover", function (event) {
+    parkdiv.on("mouseover", function () {
         var popup = $("<div>");
         popup.addClass("popup");
-        popup.text(data.data[i].exceptionhours);
+        popup.text($(this).attr("value"));
 
         // Positions popup box
         var parkdivPos = parkdiv.offset();
@@ -95,7 +96,7 @@ async function setParkBubbles(){
         });
 
         // Displays the popup on page
-        $("body").append(popup);
+        $("park").append(popup);
       });
 
       parkdiv.on("mouseout", function (event) {
