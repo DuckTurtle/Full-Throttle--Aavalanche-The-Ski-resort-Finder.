@@ -83,7 +83,7 @@ async function getParks(){
 
             }
         }
-    }
+    };
 
 //creates history buttons for all of the current past searches.
 async function createPastButton(parkNames,parkCodes){ 
@@ -158,7 +158,6 @@ async function setParkBubbles(){
     }
      
 };
-console.log(parkNames);
 //saves lists to local storge
 function saveLists(){
     localStorage.setItem("parks", JSON.stringify(parkNames));
@@ -175,6 +174,7 @@ function setLocalStorge(){
          saveLists();
      };
  };
+ //clears history bnts
  clearEL.on("click", function (){
     localStorage.clear();
     location.reload();

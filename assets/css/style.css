@@ -132,6 +132,12 @@ button{
 .parkBlock:hover .parkBlock-info {
   opacity: 1;
 }
+/*puts history row in line with park*/
+#hist{
+ margin-top: 96px;
+ margin-right: 4px;
+ margin-left: 4px;
+}
 /*shrinks parkblock on small screens*/
 @media only screen and (mix-width: 800px)  {
   .parkBlock {

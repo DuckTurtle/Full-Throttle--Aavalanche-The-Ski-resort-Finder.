@@ -1,12 +1,50 @@
 var apiKey = "W1L4ukvhh9ASpC8FYICufwmnwxcv6i16sNbSq9ZY";
 var apiKeyW = "5282121f1a385049aa27e309e97fc347";
 var curentPark = $("#itemStorgeBlock");
+var clearEL = $("#hClearBnt");
+var historyEL = $("#hist");
 var runs = 0;    
 var date = dayjs().format("MM/DD/YYYY");
  var parkCode = getParkCode();
+ var parkCodes = [];
+var parkNames = [];
 
 
 init();
+ //loads list of old parks.
+ function loadHistory(){
+    var oldNames = JSON.parse(localStorage.getItem("parks"));
+    var oldcodes = JSON.parse(localStorage.getItem("codes"));
+
+    if (!oldNames){
+        return;
+    }
+    else{
+        for (var i=0;i<oldNames.length; i++){
+            //loads old list of parks and codes.
+            parkNames.push(oldNames[i]);
+            parkCodes.push(oldcodes[i]);
+            //creates button for each park.
+            createPastButton(oldNames[i],oldcodes[i]);
+
+        }
+    }
+};
+async function createPastButton(parkNames,parkCodes){ 
+    console.log(parkCodes)
+        var oldSearchBnt = $("<button>");
+        oldSearchBnt.attr("value", parkCodes);
+        oldSearchBnt.text(parkNames);
+        oldSearchBnt.addClass("flex flex-col bg-stone-400 hover:bg-stone-600 rounded btn border-2 border-black btn-info btn-block mt-4")
+        historyEL.append(oldSearchBnt);
+        //adds event listener for the old buttons
+        oldSearchBnt.on("click", function (event){
+            event.preventDefault();
+           
+            var queryString = './resortpage.html?q=' + parkCodes;
+            location.assign(queryString);
+        })
+    };
 //pulls park code from location.
 function getParkCode(){
     var codes =  document.location.search.split("=").pop();
@@ -215,13 +253,18 @@ function clearOldStuff(){
         curentday.removeChild(curentday.firstChild);
       }
 };
-
+ //clears history bnts
+clearEL.on("click", function (){
+    localStorage.clear();
+    location.reload();
+ }) 
 function init(){
     if( runs >= 1){
     clearOldStuff();
     }
     setCurrentDay();
     otherDayForcast();
+    loadHistory();
 getParkInfo();
 setParkInfo();
 }
