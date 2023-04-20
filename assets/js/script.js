@@ -1,25 +1,3 @@
-<<<<<<< HEAD
-//key
-||||||| 491effd
-
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
-
-window.onclick = function(event) {
-    if(!event.target.matches('.dropbtn')) {
-        var dropwdowns = document.getElementsByClassName("dropdown-content");
-        var i;
-        for (i = 0; i < dropwdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
-            }
-        }
-    }
-}
-
-=======
 
 /*function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
@@ -38,7 +16,6 @@ window.onclick = function(event) {
     }
 }
 
->>>>>>> 08734579f5ca121ade96942455e5050013d8097d
 var apiKey = "W1L4ukvhh9ASpC8FYICufwmnwxcv6i16sNbSq9ZY";
 
 //state data
@@ -55,11 +32,6 @@ for (var i = 0; i < states.length ; i++) {
         }, 
         false);
         }
-<<<<<<< HEAD
-||||||| 491effd
-    
-
-=======
     */
 var cMBnt = document.querySelector('#clickMeBnt');
 var state = "";
@@ -73,7 +45,6 @@ function getState(event){
     setParkBubbles(state);
     runs++;
 }
->>>>>>> 08734579f5ca121ade96942455e5050013d8097d
 // pass park code  though location
 var pageAnchor = $("#results")
 async function getParks(){
