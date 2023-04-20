@@ -1,19 +1,57 @@
 var apiKey = "W1L4ukvhh9ASpC8FYICufwmnwxcv6i16sNbSq9ZY";
 var apiKeyW = "5282121f1a385049aa27e309e97fc347";
 var curentPark = $("#itemStorgeBlock");
+var clearEL = $("#hClearBnt");
+var historyEL = $("#hist");
 var runs = 0;    
 var date = dayjs().format("MM/DD/YYYY");
  var parkCode = getParkCode();
+ var parkCodes = [];
+var parkNames = [];
 
 
 init();
+ //loads list of old parks.
+ function loadHistory(){
+    var oldNames = JSON.parse(localStorage.getItem("parks"));
+    var oldcodes = JSON.parse(localStorage.getItem("codes"));
 
+    if (!oldNames){
+        return;
+    }
+    else{
+        for (var i=0;i<oldNames.length; i++){
+            //loads old list of parks and codes.
+            parkNames.push(oldNames[i]);
+            parkCodes.push(oldcodes[i]);
+            //creates button for each park.
+            createPastButton(oldNames[i],oldcodes[i]);
+
+        }
+    }
+};
+async function createPastButton(parkNames,parkCodes){ 
+    console.log(parkCodes)
+        var oldSearchBnt = $("<button>");
+        oldSearchBnt.attr("value", parkCodes);
+        oldSearchBnt.text(parkNames);
+        oldSearchBnt.addClass("flex flex-col bg-stone-400 hover:bg-stone-600 rounded btn border-2 border-black btn-info btn-block mt-4")
+        historyEL.append(oldSearchBnt);
+        //adds event listener for the old buttons
+        oldSearchBnt.on("click", function (event){
+            event.preventDefault();
+           
+            var queryString = './resortpage.html?q=' + parkCodes;
+            location.assign(queryString);
+        })
+    };
+//pulls park code from location.
 function getParkCode(){
     var codes =  document.location.search.split("=").pop();
     console.log(codes)
     return codes;
 }
-
+//set latitude of park
 async function setLat(){
     var data = await getCords(parkCode);
     console.log(data);
@@ -27,7 +65,7 @@ async function setLat(){
     return lLat;
     
 };
-
+//returns the longitude of the park.
 async function setLong(){
     var data = await getCords(parkCode);
     console.log(data);
@@ -41,6 +79,7 @@ async function setLong(){
     return lLong;
     
 };
+//is used to call the api and get the lat and longe of the selected park.
 async function getCords(){
     var forcastAPI = "https://developer.nps.gov/api/v1/parks?parkCode=" + parkCode + "&api_key=" + apiKey;
     let dataResults = fetch(forcastAPI)
@@ -52,6 +91,7 @@ async function getCords(){
         let data = await dataResults;
         return data;
 }
+//calls api for required park information
 async function getParkInfo (){
     var forcastAPI = "https://developer.nps.gov/api/v1/parks?parkCode=" + parkCode + "&api_key=" + apiKey;
     let dataResults = fetch(forcastAPI)
@@ -63,6 +103,7 @@ async function getParkInfo (){
         let data = await dataResults;
         return data;
 }
+//pulls park info from api call and diplays it on screen
 async function setParkInfo(){
     var data = await getParkInfo(parkCode);
     console.log(data);
@@ -156,7 +197,7 @@ async function getOtherDayWeather (){
     //creates element for location and date
     var curentDayAnchor = $("#weatherDiv");
     var blockbox = $("<div>");
-    blockbox.addClass("weatherBlock ml-10 border-e-8 border-t-4 border-stone-400");
+    blockbox.addClass("weatherBlock border-e-8 border-t-4 border-stone-400");
     curentDayAnchor.append(blockbox)
 
     var daytext = $("<h4>");
@@ -185,7 +226,7 @@ async function otherDayForcast(){
     var forcatDayAnchor = $("#weatherDiv");
     for(i=4; i<40; i+=8){
     var blockbox = $("<div>");
-    blockbox.addClass("weatherBlock ml-32 border-e-8 border-t-4 border-stone-400");
+    blockbox.addClass("weatherBlock mr-10 border-e-8 border-t-4 border-stone-400");
     forcatDayAnchor.append(blockbox)
 
     var daytext = $("<h4>");
@@ -204,6 +245,7 @@ async function otherDayForcast(){
     blockbox.append(tempa);
     }
 };
+//clears old items incase of page reload or some other bug
 function clearOldStuff(){
     var curentday = document.getElementById("itemStorgeBlock");
     console.log(curentday);
@@ -211,13 +253,18 @@ function clearOldStuff(){
         curentday.removeChild(curentday.firstChild);
       }
 };
-
+ //clears history bnts
+clearEL.on("click", function (){
+    localStorage.clear();
+    location.reload();
+ }) 
 function init(){
     if( runs >= 1){
     clearOldStuff();
     }
     setCurrentDay();
     otherDayForcast();
+    loadHistory();
 getParkInfo();
 setParkInfo();
 }

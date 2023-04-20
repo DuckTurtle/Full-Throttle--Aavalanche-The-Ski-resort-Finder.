@@ -28,11 +28,12 @@ Tool requires no installation as it is all contained within the internet browser
 On page launch, click on the select a state button.
 A dropdown menu containing a list of U.S. states will be displayed.
 Click on the state you would like to search within, then click the search button.
-![After State Search](assets/images/StateView.png)
 Hover over a national park to see it's location.
 Click on a park to be taken to a specific page for that park.
 The page will contain the cost of admission, the phone number, location, website, hours of operation and a 5 day weather forecast for that specific park are all displayed.
-![After Park Selection](assets/images/ParkView.png)
+On the left side your past searches will pop up as buttons, you can click on these buttons at any time to re-visit a park's info page. You can also hit the clear history button to remove the list of past searches.
+![After State Search](assets/images/StateView.JPG)
+![After Park Selection](assets/images/ParkView.JPG)
 
 ## Credits
 
