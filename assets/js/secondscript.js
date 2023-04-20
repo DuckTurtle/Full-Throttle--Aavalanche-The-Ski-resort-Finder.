@@ -72,34 +72,48 @@ async function setParkInfo(){
         return;
     }
     var parkName = $("<h2>");
-    parkName.addClass("text-center text-3xl mt-24 p-2 bg-stone-400");
+    parkName.addClass("text-center text-5xl mt-24 p-2 bg-stone-400");
     parkName.text(data.data[0].fullName);
     curentPark.append(parkName);
 
     var parkcost = $("<p>");
-    parkcost.text("Cost: " + data.data[0].entranceFees[0].description);
-    curentPark.append(parkcost);
-    parkcost.addClass("bg-stone-400");
-
+    var costText = $("<strong>");
+    var costTitle = costText.text("Cost: ");
+    parkcost.text(data.data[0].entranceFees[0].description);
+    curentPark.append(costTitle, parkcost);
+    parkcost.addClass("bg-stone-400 text-xl");
+    costTitle.addClass("bg-stone-400 text-2xl");
     var parkCall = $("<p>");
-    parkCall.text("Phone number: " + data.data[0].contacts.phoneNumbers[0].phoneNumber);
-    curentPark.append(parkCall);
-    parkCall.addClass("bg-stone-400");
+    var callText = $("<strong>");
+    var callTitle = callText.text("Phone number: ");
+    parkCall.text(data.data[0].contacts.phoneNumbers[0].phoneNumber);
+    curentPark.append(callTitle, parkCall);
+    parkCall.addClass("bg-stone-400 text-xl");
+    callTitle.addClass("bg-stone-400 text-2xl");
 
     var parklocation = $("<p>");
-    parklocation.text("Location: " + data.data[0].directionsInfo);
-    curentPark.append(parklocation);
-    parklocation.addClass("bg-stone-400");
+    var locationText = $("<strong>");
+    var locationTitle = locationText.text("Location: ");
+    parklocation.text( data.data[0].directionsInfo);
+    curentPark.append(locationTitle, parklocation);
+    parklocation.addClass("bg-stone-400 text-xl");
+    locationTitle.addClass("bg-stone-400 text-2xl");
 
     var parkWebsite = $("<p>");
-    parkWebsite.text("Website: " + data.data[0].directionsUrl);
-    curentPark.append(parkWebsite);
-    parkWebsite.addClass("bg-stone-400");
+    var websiteText = $("<strong>");
+    var websiteTitle = websiteText.text("Website: ");
+    parkWebsite.text(data.data[0].directionsUrl);
+    curentPark.append(websiteTitle, parkWebsite);
+    parkWebsite.addClass("bg-stone-400 text-xl");
+    websiteTitle.addClass("bg-stone-400 text-2xl");
 
     var parkHours = $("<p>");
-    parkHours.text("Hours: " + data.data[0].operatingHours[0].description);
-    curentPark.append(parkHours);
-    parkHours.addClass("bg-stone-400");
+    var hourText = $("<strong>");
+    var hourTitle = hourText.text("Hours: ");
+    parkHours.text(data.data[0].operatingHours[0].description);
+    curentPark.append(hourTitle, parkHours);
+    parkHours.addClass("bg-stone-400 text-xl");
+    hourTitle.addClass("bg-stone-400 text-2xl");
 
 }
 //calls the weather api with given city.
@@ -142,11 +156,11 @@ async function getOtherDayWeather (){
     //creates element for location and date
     var curentDayAnchor = $("#weatherDiv");
     var blockbox = $("<div>");
-    blockbox.addClass("weatherBlock border-e-8 border-t-4 border-stone-400");
+    blockbox.addClass("weatherBlock ml-10 border-e-8 border-t-4 border-stone-400");
     curentDayAnchor.append(blockbox)
 
     var daytext = $("<h4>");
-    daytext.addClass("");
+    daytext.addClass("pl-2");
     daytext.text(data.name + " (" + date + ") ");
     blockbox.append(daytext);
     // adds weather img
@@ -155,7 +169,7 @@ async function getOtherDayWeather (){
     blockbox.append(coolIcon);
 //  adds tempature element at text
     var tempa = $("<p>");
-    tempa.addClass("");
+    tempa.addClass("pl-2");
     tempa.text("Temp: " + data.main.temp + "°F");
     blockbox.append(tempa);
 
@@ -171,11 +185,11 @@ async function otherDayForcast(){
     var forcatDayAnchor = $("#weatherDiv");
     for(i=4; i<40; i+=8){
     var blockbox = $("<div>");
-    blockbox.addClass("weatherBlock border-e-8 border-t-4 border-stone-400");
+    blockbox.addClass("weatherBlock ml-32 border-e-8 border-t-4 border-stone-400");
     forcatDayAnchor.append(blockbox)
 
     var daytext = $("<h4>");
-    daytext.addClass("");
+    daytext.addClass("pl-2");
     var dateCovert = dayjs(data.list[i].dt_txt).format("MM/DD/YYYY")
     daytext.text(data.city.name + " (" + dateCovert + ") ");
     blockbox.append(daytext);
@@ -185,7 +199,7 @@ async function otherDayForcast(){
     blockbox.append(coolIcon);
 
     var tempa = $("<p>");
-    tempa.addClass("");
+    tempa.addClass("pl-2");
     tempa.text("Temp: " + data.list[i].main.temp + "°F");
     blockbox.append(tempa);
     }
