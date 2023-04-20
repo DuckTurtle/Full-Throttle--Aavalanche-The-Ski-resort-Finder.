@@ -159,7 +159,7 @@ async function getOtherDayWeather (){
     //creates element for location and date
     var curentDayAnchor = $("#weatherDiv");
     var blockbox = $("<div>");
-    blockbox.addClass("weatherBlock ml-10 border-e-8 border-t-4 border-stone-400");
+    blockbox.addClass("weatherBlock border-e-8 border-t-4 border-stone-400");
     curentDayAnchor.append(blockbox)
 
     var daytext = $("<h4>");
@@ -188,7 +188,7 @@ async function otherDayForcast(){
     var forcatDayAnchor = $("#weatherDiv");
     for(i=4; i<40; i+=8){
     var blockbox = $("<div>");
-    blockbox.addClass("weatherBlock ml-32 border-e-8 border-t-4 border-stone-400");
+    blockbox.addClass("weatherBlock mr-10 border-e-8 border-t-4 border-stone-400");
     forcatDayAnchor.append(blockbox)
 
     var daytext = $("<h4>");

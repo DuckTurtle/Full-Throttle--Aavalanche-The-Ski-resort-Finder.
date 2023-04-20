@@ -35,6 +35,7 @@ for (var i = 0; i < states.length ; i++) {
     */
 var cMBnt = document.querySelector('#clickMeBnt');
 var historyEL = $("#history");
+var clearEL = $("#hClearBnt");
 var state = "";
 var runs = 0;
 var park = {};
@@ -90,7 +91,7 @@ console.log(parkCodes)
     var oldSearchBnt = $("<button>");
     oldSearchBnt.attr("value", parkCodes);
     oldSearchBnt.text(parkNames);
-    oldSearchBnt.addClass("flex flex-col bg-stone-400 hover:bg-stone-600 rounded btn border-2 border-black btn-info btn-block")
+    oldSearchBnt.addClass("flex flex-col bg-stone-400 hover:bg-stone-600 rounded btn border-2 border-black btn-info btn-block mt-4")
     historyEL.append(oldSearchBnt);
     //adds event listener for the old buttons
     oldSearchBnt.on("click", function (event){
@@ -174,6 +175,10 @@ function setLocalStorge(){
          saveLists();
      };
  };
+ clearEL.on("click", function (){
+    localStorage.clear();
+    location.reload();
+ }) 
 //clears the last search results.
 function clearOldStuff(){
     var curentday = document.getElementById("results");

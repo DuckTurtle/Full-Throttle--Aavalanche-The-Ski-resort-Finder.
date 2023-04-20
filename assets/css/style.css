@@ -42,17 +42,25 @@
   
   /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
   .show {display:block;}
-  /*styles the weather blocks for the second page*/
+  /*sets first page to be in columns*/
   #things{
     display: flex;
     flex-direction: row;
   }
+  /*adds padding for search bar*/
   #left{
     margin-left:100px ;
     margin-right: 50px;
   }
   .weatherBlock, img{
     padding-right:30px;
+}
+button{
+  margin-top: 7px;
+  width: 170px;
+  border-radius: 7px;
+  align-items: center;
+  justify-content: center;
 }
 /*Formats the weather into blocks on the second page.*/
 .weatherBlock{
@@ -65,6 +73,16 @@
     color:antiquewhite;
     background-color: rgb(34, 33, 33);
     font-size: 15px;
+}
+/*formats history block to look nice*/
+#history{
+  flex-wrap: nowrap;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+  padding: 20px 15px;
 }
 
 
