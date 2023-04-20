@@ -68,6 +68,7 @@ async function setParkBubbles(){
      for(i=0; i<data.data.length; i++){
     var parkdiv = $("<button>");
     parkdiv.attr({id: data.data[i].parkCode});
+    parkdiv.attr("value", i );
     pageAnchor.append(parkdiv);
     parkdiv.addClass("parkBlock");
 
@@ -80,29 +81,8 @@ async function setParkBubbles(){
     parkName.addClass("text-center text-2xl p-2");
     parkName.text(data.data[i].fullName);
     parkdiv.append(parkName);
-    /* not currently working
-    // Creates popup box
-    parkdiv.on("mouseover", function (event) {
-        var popup = $("<div>");
-        popup.addClass("popup");
-        popup.text(data.data[i].exceptionhours);
-
-        // Positions popup box
-        var parkdivPos = parkdiv.offset();
-        popup.css({
-          top: parkdivPos.top + parkdiv.outerHeight() + 10,
-          left: parkdivPos.left,
-        });
-
-        // Displays the popup on page
-        $("body").append(popup);
-      });
-
-      parkdiv.on("mouseout", function (event) {
-        // Remove the popup when the mouse leaves the parkdiv element
-        $(".popup").remove();
-      });
-*/
+    
+ 
     parkdiv.on("click", function (event) {
         event.preventDefault();
 
@@ -112,7 +92,22 @@ async function setParkBubbles(){
         location.assign(queryString);
       });
 
-
+    // Add mouseover event listener to display additional information
+    parkdiv.on("mouseover", function () {
+        var parkInfo = $("<div>");
+        parkInfo.addClass("parkBlock-info");
+        console.log($(this).attr("value"))
+        parkInfo.text("This park is located in " + data.data[$(this).attr("value")].addresses[0].city + "! Click me to show more info!");
+      
+  
+        // Append the information box to the parent element
+        $(this).append(parkInfo);
+      });
+  
+      // Add mouseout event listener to remove the information box
+      parkdiv.on("mouseout", function () {
+        $(this).find(".parkBlock-info").remove();
+      });
     }
      
 };
