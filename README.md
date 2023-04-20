@@ -1,21 +1,23 @@
-# Full-Throttle--Aavalanche-The-Ski-resort-Finder.
+# Full-Throttle--Tree-Finder--The-National-Park-Finder
 
 Tree finder: The website to find national parks.
 
 ## User Story
 
-As a national and or state park enjoyer, when I open the page, it asks me for a state from a dropdown list
+As a national park enjoyer, WHEN I open the page, THEN it asks me for a state from a dropdown list
 
 WHEN I click on the state that I want to choose, THEN it shows me the list of national and state parks located in that state.
+
+WHEN I hover over a park, THEN it shows me the city that the park is located in.
 
 WHEN I click on a park, THEN the cost of admission, the phone number, location, website, hours of operation and a 5 day weather forecast are all displayed.
 
 ## Description
 
-Our team's motivataion was educational in nature. We were tasked with creating a live web application that utilizes at least two API calls.
+Our team's motivation was educational in nature. We were tasked with creating a live web application that utilizes at least two API calls.
 We chose a national park finder for our project as we thought it would be a useful tool that would allow us to implement multiple API calls.
 The main problem our web application seeks to solve is finding national parks easily. Allowing users to search by state means that users can find the closest parks to their current location. Displaying hours of operation and weather forecasts once a park is selected allows users to easily plan trips to a nearby park.
-During this project our group learned many things inlcluding: API implementation, best practices for Github use as a group, and coding specific teamwork skills.
+During this project our group learned many things including: API implementation, best practices for Github use as a group, and coding specific teamwork skills.
 
 ## Installation
 
@@ -38,7 +40,7 @@ Collaborators:
 Quinton Schnell, Github: DuckTurtle.
 Anthony Hidajat, Github: mmakgeolli.
 Kyle McClendon, Github: KyleM021199.
-Mitchell Stackhouse, Github Stackhouse8.
+Mitchell Stackhouse, Github: Stackhouse8.
 
 ## License
 
