@@ -1,6 +1,6 @@
 # Full-Throttle--Aavalanche-The-Ski-resort-Finder.
 
-Avalanche: The only website to find ski resorts.
+Tree finder: The website to find national parks.
 
 ## User Story
 
@@ -9,6 +9,13 @@ As a national and or state park enjoyer, when I open the page, it asks me for a 
 WHEN I click on the state that I want to choose, THEN it shows me the list of national and state parks located in that state.
 
 WHEN I click on a park, THEN the cost of admission, the phone number, location, website, hours of operation and a 5 day weather forecast are all displayed.
+
+## Description
+
+Our team's motivataion was educational in nature. We were tasked with creating a live web application that utilizes at least two API calls.
+We chose a national park finder for our project as we thought it would be a useful tool that would allow us to implement multiple API calls.
+The main problem our web application seeks to solve is finding national parks easily. Allowing users to search by state means that users can find the closest parks to their current location. Displaying hours of operation and weather forecasts once a park is selected allows users to easily plan trips to a nearby park.
+During this project our group learned many things inlcluding: API implementation, best practices for Github use as a group, and coding specific teamwork skills.
 
 ## Installation
 
@@ -19,9 +26,11 @@ Tool requires no installation as it is all contained within the internet browser
 On page launch, click on the select a state button.
 A dropdown menu containing a list of U.S. states will be displayed.
 Click on the state you would like to search within, then click the search button.
+![After State Search](assets/images/StateView.png)
 Hover over a national park to see it's location.
 Click on a park to be taken to a specific page for that park.
 The page will contain the cost of admission, the phone number, location, website, hours of operation and a 5 day weather forecast for that specific park are all displayed.
+![After Park Selection](assets/images/ParkView.png)
 
 ## Credits
 
