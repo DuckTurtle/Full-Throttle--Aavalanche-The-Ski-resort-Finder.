@@ -46,6 +46,7 @@
   .weatherBlock, img{
     padding-right:30px;
 }
+/*Formats the weather into blocks on the second page.*/
 .weatherBlock{
     display: inline-flex;
     flex-direction: row;
@@ -59,12 +60,13 @@
 }
 
 
-
+/* formats img for park in the park's block*/
 .parkBlockimg{
   height: 60%;
   width: 100%;
   padding-right: 0px;
 }
+/*css for park blocks*/
 .parkBlock{
   display: inline-flex;
   flex-direction: row;
@@ -76,17 +78,17 @@
   background-color: rgb(7, 112, 21);
   font-size: 15px;
 }
-
+/*adjust parkblock for on hover elemnet*/
 .parkBlock {
   position: relative;
   transition: transform 0.3s ease-out;
   transform-origin: center;
 }
-
+/*makes block bigger on hover*/
 .parkBlock:hover {
   transform: scale(1.05);
 }
-
+/*styles on hover infomation*/
 .parkBlock-info {
   position: absolute;
   bottom: 100%;
@@ -100,11 +102,11 @@
   opacity: 0;
   transition: opacity 0.3s ease-out;
 }
-
+/*makes info block apear*/
 .parkBlock:hover .parkBlock-info {
   opacity: 1;
 }
-
+/*shrinks parkblock on small screens*/
 @media only screen and (mix-width: 800px)  {
   .parkBlock {
     height: 250px;
