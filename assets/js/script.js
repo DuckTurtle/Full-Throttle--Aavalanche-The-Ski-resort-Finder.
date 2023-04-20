@@ -34,8 +34,12 @@ for (var i = 0; i < states.length ; i++) {
         }
     */
 var cMBnt = document.querySelector('#clickMeBnt');
+var historyEL = $("#history");
 var state = "";
 var runs = 0;
+var park = {};
+var parkCodes = [];
+var parkNames = [];
 //gets the the current state selected by user 
 function getState(event){
     event.preventDefault();
@@ -60,6 +64,42 @@ async function getParks(){
         let data = await dataResults;
         return data;
 }
+    //loads list of old parks.
+    function loadHistory(){
+        var oldNames = JSON.parse(localStorage.getItem("parks"));
+        var oldcodes = JSON.parse(localStorage.getItem("codes"));
+
+        if (!oldNames){
+            return;
+        }
+        else{
+            for (var i=0;i<oldNames.length; i++){
+                //loads old list of parks and codes.
+                parkNames.push(oldNames[i]);
+                parkCodes.push(oldcodes[i]);
+                //creates button for each park.
+                createPastButton(oldNames[i],oldcodes[i]);
+
+            }
+        }
+    }
+
+//creates history buttons for all of the current past searches.
+async function createPastButton(parkNames,parkCodes){ 
+console.log(parkCodes)
+    var oldSearchBnt = $("<button>");
+    oldSearchBnt.attr("value", parkCodes);
+    oldSearchBnt.text(parkNames);
+    oldSearchBnt.addClass("flex flex-col bg-stone-400 hover:bg-stone-600 rounded btn border-2 border-black btn-info btn-block")
+    historyEL.append(oldSearchBnt);
+    //adds event listener for the old buttons
+    oldSearchBnt.on("click", function (event){
+        event.preventDefault();
+       
+        var queryString = './resortpage.html?q=' + parkCodes;
+        location.assign(queryString);
+    })
+};
 // creates the blocks that contain the loaded list of parks.
 async function setParkBubbles(){
     var data = await getParks(state);
@@ -73,6 +113,7 @@ async function setParkBubbles(){
     var parkdiv = $("<button>");
     parkdiv.attr({id: data.data[i].parkCode});
     parkdiv.attr("value", i );
+    parkdiv.attr({SN: data.data[i].name})
     pageAnchor.append(parkdiv);
     parkdiv.addClass("parkBlock");
 
@@ -89,9 +130,10 @@ async function setParkBubbles(){
  //adds event listoner for each park block, upon clicking sends you to next page.
     parkdiv.on("click", function (event) {
         event.preventDefault();
-
         var parkCode = $(this).attr("id")
-        console.log(parkCode)
+        park.code = $(this).attr("id");
+        park.name = $(this).attr("sn");
+        setLocalStorge();
         var queryString = './resortpage.html?q=' + parkCode;
         location.assign(queryString);
       });
@@ -115,6 +157,23 @@ async function setParkBubbles(){
     }
      
 };
+console.log(parkNames);
+//saves lists to local storge
+function saveLists(){
+    localStorage.setItem("parks", JSON.stringify(parkNames));
+    localStorage.setItem("codes", JSON.stringify(parkCodes));
+    }
+//adds searched thing to lists
+function setLocalStorge(){ 
+     if (parkNames.includes(park.name)){
+         return;
+     }
+     else{
+         parkNames.push(park.name);
+         parkCodes.push(park.code);
+         saveLists();
+     };
+ };
 //clears the last search results.
 function clearOldStuff(){
     var curentday = document.getElementById("results");
@@ -124,4 +183,5 @@ function clearOldStuff(){
       }
 };
 //grabs parks when the button is clicked
+loadHistory();
 cMBnt.addEventListener("click",getState)

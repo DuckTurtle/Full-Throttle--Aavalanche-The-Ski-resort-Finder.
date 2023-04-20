@@ -43,6 +43,14 @@
   /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
   .show {display:block;}
   /*styles the weather blocks for the second page*/
+  #things{
+    display: flex;
+    flex-direction: row;
+  }
+  #left{
+    margin-left:100px ;
+    margin-right: 50px;
+  }
   .weatherBlock, img{
     padding-right:30px;
 }
