@@ -32,8 +32,8 @@ Hover over a national park to see it's location.
 Click on a park to be taken to a specific page for that park.
 The page will contain the cost of admission, the phone number, location, website, hours of operation and a 5 day weather forecast for that specific park are all displayed.
 On the left side your past searches will pop up as buttons, you can click on these buttons at any time to re-visit a park's info page. You can also hit the clear history button to remove the list of past searches.
-![After State Search](./assets/images/StateView.JPG)
-![After Park Selection](./assets/images/ParkView.JPG)
+![After State Search](./assets/Images/StateView.JPG)
+![After Park Selection](./assets/Images/ParkView.JPG)
 WebSite link: https://duckturtle.github.io/Full-Throttle--TreeFinder-The-Park-Finder-App/ 
 
 ## Credits
