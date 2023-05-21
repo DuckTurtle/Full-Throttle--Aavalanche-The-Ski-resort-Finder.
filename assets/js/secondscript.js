@@ -117,13 +117,15 @@ async function setParkInfo(){
     parkName.text(data.data[0].fullName);
     curentPark.append(parkName);
 
-    var parkcost = $("<p>");
+  if (data.data[0].entranceFees[0] !== undefined) {
+   var parkcost = $("<p>");
     var costText = $("<strong>");
     var costTitle = costText.text("Cost: ");
     parkcost.text(data.data[0].entranceFees[0].description);
     curentPark.append(costTitle, parkcost);
     parkcost.addClass("bg-stone-400 text-xl");
     costTitle.addClass("bg-stone-400 text-2xl");
+};
     var parkCall = $("<p>");
     var callText = $("<strong>");
     var callTitle = callText.text("Phone number: ");
