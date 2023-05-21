@@ -68,7 +68,7 @@ button{
     flex-direction: row;
     margin: 20px;
     flex-wrap: wrap;
-    height: 150px;
+    height: 170px;
     width: 120px;
     color:antiquewhite;
     background-color: rgb(34, 33, 33);
@@ -139,7 +139,7 @@ button{
  margin-left: 4px;
 }
 /*shrinks parkblock on small screens*/
-@media screen and (max-width: 600px)  {
+@media screen and (max-width: 675px)  {
   .parkBlock {
     height: 250px;
     width: 200px;
